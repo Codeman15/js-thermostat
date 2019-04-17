@@ -29,10 +29,7 @@ describe('Thermostat', function() {
     expect(thermostat.getCurrentTemperature()).toEqual(10);
   });
 
-  it('has a maximum of 30 degrees', function(){
-    for (var temp = 20; temp < 30; temp++){
-      thermostat.up();
-    }
-    expect(thermostat.getCurrentTemperature()).toEqual(30);
+  it('has power saving mode on by default', function() {
+    expect(thermostat.isPowerSavingModeOn()).toBe(true);
   });
 });
