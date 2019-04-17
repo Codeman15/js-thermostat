@@ -1,9 +1,7 @@
 'use strict';
 
 describe('Thermostat', function() {
-
   var thermostat;
-
   beforeEach(function() {
     thermostat = new Thermostat();
   });
@@ -39,9 +37,7 @@ describe('Thermostat', function() {
 });
 
 describe('power saving', function() {
-
   var thermostat;
-
   beforeEach(function() {
     thermostat = new Thermostat();
   });
@@ -75,5 +71,24 @@ describe('power saving', function() {
       thermostat.up();
     }
     expect(thermostat.getCurrentTemperature()).toEqual(32);
+  });
+
+  it('it is considered low-usage when under 18', function() {
+    for (var i = 0; i < 3; i++) {
+      thermostat.down();
+    }
+    expect(thermostat.energyUsage()).toEqual('low-usage');
+  });
+
+  it('it is considered medium-usage when between 18 and 25', function() {
+    expect(thermostat.energyUsage()).toEqual('medium-usage');
+  });
+
+  it('it is considered high-usage above 25', function() {
+    thermostat.powerSavingMode = false;
+    for (var i = 0; i < 6; i++) {
+      thermostat.up();
+    }
+    expect(thermostat.energyUsage()).toEqual('high-usage');
   });
 });
