@@ -1,5 +1,16 @@
+body {
+    background-image: url("weather.png");
+    font-size: 35px;
+}
+
+.button {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
 .low-usage {
-  color: green;
+  color: limegreen;
 }
 
 .medium-usage {
